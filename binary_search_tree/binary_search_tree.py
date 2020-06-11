@@ -11,12 +11,12 @@ This part of the project comprises two days:
 from queue import QueueFromArray as Queue
 from stack import StackFromLinkedList as Stack
 
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
-
 
     def insert(self, value):
         if value < self.value:
@@ -25,45 +25,42 @@ class BSTNode:
                 self.left = BSTNode(value)
             else:
                 self.left.insert(value)
-            
+
         else:
             if not self.right:
                 self.right = BSTNode(value)
             else:
                 self.right.insert(value)
 
-
     def contains(self, target):
         if self.value == target:
             return True
-        
+
         elif target < self.value:
             if self.left:
                 return self.left.contains(target)
-        
+
         else:
             if self.right:
                 return self.right.contains(target)
 
         return False
 
-
     def get_max(self):
         current_node = self
 
         while current_node.right:
             current_node = current_node.right
-        
+
         return current_node.value
 
-
     def for_each(self, fn):
-        
+
         fn(self.value)
-                
+
         if self.left:
             self.left.for_each(fn)
-        
+
         if self.right:
             self.right.for_each(fn)
 
@@ -74,12 +71,12 @@ class BSTNode:
     def in_order_print(self, node):
         if self.left:
             self.left.in_order_print(self.left)
-        
+
         print(node.value)
 
         if self.right:
             self.right.in_order_print(self.right)
-        
+
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
@@ -92,7 +89,7 @@ class BSTNode:
 
             if next_in_line.left:
                 queue.enqueue(next_in_line.left)
-            
+
             if next_in_line.right:
                 queue.enqueue(next_in_line.right)
 
@@ -108,10 +105,9 @@ class BSTNode:
 
             if last_added.right:
                 stack.push(last_added.right)
-              
+
             if last_added.left:
                 stack.push(last_added.left)
-
 
     # Stretch Goals -------------------------
     # Note: Research may be required

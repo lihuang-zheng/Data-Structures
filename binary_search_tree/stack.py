@@ -1,5 +1,6 @@
 from singly_linked_list import LinkedList
 
+
 class StackFromArray:
     def __init__(self):
         self.size = 0
@@ -13,10 +14,10 @@ class StackFromArray:
         self.size += 1
 
     def pop(self):
-
         if self.size > 0:
             self.size -= 1
             return self.storage.pop()
+
 
 class StackFromLinkedList:
     def __init__(self):
@@ -31,10 +32,10 @@ class StackFromLinkedList:
         self.size += 1
 
     def pop(self):
-
         if self.size > 0:
             self.size -= 1
             return self.storage.remove_from_head()
+
 
 class Stack(StackFromArray):
 
